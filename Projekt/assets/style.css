@@ -1,0 +1,188 @@
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+header {
+    background-color: #003a5a;
+    width: 100%;
+    min-height: 30px;
+    padding: 15px;
+}
+#logo {
+    height: 30px;
+    margin-left: 5px;
+}
+nav{
+    background-color: #064b71;
+    min-height: 23px;
+}
+ul {
+    list-style-type: none;
+    margin-left: 19px;
+    padding: 0px;
+}
+nav li {
+    font-size: 12pt;
+    font-weight: bold;
+}
+nav a{
+    color: white !important;
+}
+nav a:hover{
+    color:#f18825 !important;
+}
+#linkactive{
+    text-decoration: underline;
+    text-decoration-color: #f18825;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
+}
+footer {
+    width: 100%;
+    min-height: 80px;
+    background-color:#003a5a;
+    text-align: center;
+    color: white;
+    font-size: 11pt;
+    padding:15px;
+   
+}
+footer img{
+    margin: 10px 0px;
+}
+main {
+    padding: 20px 20px 50px 20px;
+    max-width: 95% !important;
+}
+section img {
+    width: 100%;
+    margin: 0 auto;
+}
+main a {
+    text-decoration:none;
+    color: black;
+}
+main h1{
+    font-size: 18pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 20px 0px;
+}
+main h2{
+    font-size: 18pt;
+    font-weight: bold;
+    margin: 20px 0px;
+}
+.page-wrapper {
+    max-width: 75% !important;
+    margin: 0 auto;
+}
+.clanak h2{
+    margin: 30px 0px;
+}
+.clanak h1{
+    font-size: 21pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.clanak p{
+    margin: 30px 0px; 
+}
+.image-container img {
+    min-height: 20vh;
+    width: 100%;
+}
+.article-container{
+    max-width: 75% !important;
+    margin: 0 auto; 
+}
+/* Uređivanje forme */
+.form-item {
+    margin-bottom: 24px; 
+}
+.form-item label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.form-field {
+    display: flex;
+    flex-direction: column;
+} 
+.form-field-textual, .input-text{
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-item .form-check {
+    display: flex;
+    align-items: center;
+}
+.form-check input[type="checkbox"] {
+    margin-top: 8px;
+    width: 20px;
+    height: 20px;
+}
+.form-item button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+}
+.form-item button[type="reset"] {
+    background-color: #f18825;
+    color: white;
+}
+.form-item button[type="submit"] {
+    background-color: #064b71;
+    color: white;
+}
+
+.datum{
+    margin-top: 25px;
+    font-size: 10pt;
+    color:#9b9b9b;
+    font-weight: 100;
+}
+.bojaPoruke{
+    color:red;
+}
+.page-wrapper-prijava{
+    max-width: 50% !important;
+    margin: 0 auto;
+}
+.login a{
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 16px;
+    color: white;
+    background-color: #f18825;
+    border-radius: 4px;
+}
+.login input[type="submit"]{
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 16px;
+    color: white;
+    background-color: #064b71;
+    border-radius: 4px;
+}
+@media (max-width:575px) {
+    nav li {
+       text-align: center;
+    }
+    nav ul {
+        width: 100%;
+        margin-left:0px;
+    }
+    header .container-fluid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #logo {
+        margin-left: 0px;
+    }
+}

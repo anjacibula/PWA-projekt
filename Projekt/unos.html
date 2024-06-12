@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="hr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Anja Cibula">
+        <meta name="description" content="Stranica za potrebe kolegija PWA'">
+        <title>WELT</title>
+        <link rel="icon" type="image/x-icon" href="images/favicon.png">
+        <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+    </head>
+    <body class="container mx-auto">
+        <header>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="images/Welt_Logo.png" id="logo" alt="">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <nav class="row navbar navbar-expand-lg">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="index.php" class="nav-link">POČETNA</a></li>
+                    <li class="nav-item"><a href="kategorija.php?kategorija=slavni" class="nav-link">SVIJET SLAVNIH</a></li>
+                    <li class="nav-item"><a href="kategorija.php?kategorija=ljepota" class="nav-link">LJEPOTA I NJEGA</a></li>
+                    <li class="nav-item"><a href="unos.html" class="nav-link" id="linkactive">UNOS</a></li>
+                    <li class="nav-item"><a href="administracija.php" class="nav-link">ADMINISTRACIJA</a></li>
+                    <li class="nav-item"><a href="prijava.php" class="nav-link">PRIJAVA</a></li>
+                    <li class="nav-item"><a href="registracija.php" class="nav-link">REGISTRACIJA</a></li>
+                </ul>
+            </nav>
+        </div>
+        <main class="container">
+            <h1>Unos novog članka</h1>
+            <div class="page-wrapper">
+                <form enctype="multipart/form-data" action="unos.php" method="POST">
+                    <div class="form-item">
+                        <span id="porukaTitle" class="bojaPoruke"></span>
+                        <label for="title">Naslov vijesti</label>
+                        <div class="form-field">
+                            <input type="text" name="title" id="title" class="form-field-textual">
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <span id="porukaAbout" class="bojaPoruke"></span>
+                        <label for="about">Kratki sažetak vijesti (do 100 znakova)</label> 
+                        <div class="form-field">
+                            <textarea name="about" id="about" cols="30" rows="10" class="form-field-textual"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <span id="porukaContent" class="bojaPoruke"></span>
+                        <label for="content">Sadržaj vijesti</label>
+                        <div class="form-field">
+                            <textarea name="content" id="content" cols="30" rows="10" class="form-field-textual"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <span id="porukaSlika" class="bojaPoruke"></span>
+                        <label for="pphoto">Slika: </label>
+                        <div class="form-field">
+                            <input type="file" class="input-text" accept="image/jpg,image/jpeg,image/png" id="pphoto" name="pphoto"/>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <span id="porukaKategorija" class="bojaPoruke"></span>
+                        <label for="category">Kategorija vijesti</label>
+                        <div class="form-field">
+                            <select name="category" id="category" class="form-field-textual">
+                                <option value="" disabled selected>Odabir kategorije</option>
+                                <option value="slavni">Svijet slavnih</option>
+                                <option value="ljepota">Ljepota i Njega</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-check">
+                            <label>Spremiti u arhivu?
+                                <div class="form-field">
+                                    <input type="checkbox" name="archive">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <button type="submit" name="posalji" id="submit_gumb" value="Prihvati">Prihvati</button>
+                        <button type="reset" name="ponisti" value="Poništi">Poništi</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <script type="text/javascript">
+            document.getElementById("submit_gumb").onclick = function(event) { 
+                var slanjeForme = true; 
+
+                // Naslov vjesti (5-30 znakova)
+                var poljeTitle = document.getElementById("title"); 
+                var title = document.getElementById("title").value; 
+                if (title.length < 5 || title.length > 30) { 
+                    slanjeForme = false; 
+                    poljeTitle.style.border="1px dashed red"; 
+                    document.getElementById("porukaTitle").innerHTML="Naslov vjesti mora imati između 5 i 30 znakova!<br>"; 
+                }
+                else { 
+                    poljeTitle.style.border="1px solid green"; 
+                    document.getElementById("porukaTitle").innerHTML=""; 
+                } 
+                // Kratki sadržaj (10-100 znakova) 
+                var poljeAbout = document.getElementById("about"); 
+                var about = document.getElementById("about").value; 
+                if (about.length < 10 || about.length > 100) { 
+                    slanjeForme = false; 
+                    poljeAbout.style.border="1px dashed red"; 
+                    document.getElementById("porukaAbout").innerHTML="Kratki sadržaj mora imati između 10 i 100 znakova!<br>"; 
+                }
+                else { 
+                    poljeAbout.style.border="1px solid green"; 
+                    document.getElementById("porukaAbout").innerHTML=""; 
+                } 
+                // Sadržaj mora biti unesen 
+                var poljeContent = document.getElementById("content"); 
+                var content = document.getElementById("content").value; 
+                if (content.length == 0) { 
+                    slanjeForme = false; 
+                    poljeContent.style.border="1px dashed red"; 
+                    document.getElementById("porukaContent").innerHTML="Sadržaj mora biti unesen!<br>"; 
+                }
+                else { 
+                    poljeContent.style.border="1px solid green";
+                    document.getElementById("porukaContent").innerHTML=""; 
+                } 
+                // Slika mora biti unesena 
+                var poljeSlika = document.getElementById("pphoto"); 
+                var pphoto = document.getElementById("pphoto").value; 
+                if (pphoto.length == 0) { 
+                    slanjeForme = false; 
+                    poljeSlika.style.border="1px dashed red"; 
+                    document.getElementById("porukaSlika").innerHTML="Slika mora biti odabrana!<br>"; 
+                }
+                else { 
+                    poljeSlika.style.border="1px solid green"; 
+                    document.getElementById("porukaSlika").innerHTML=""; 
+                } // Kategorija mora biti odabrana 
+                var poljeCategory = document.getElementById("category"); 
+                if(document.getElementById("category").selectedIndex == 0) { 
+                    slanjeForme = false; 
+                    poljeCategory.style.border="1px dashed red"; 
+                    document.getElementById("porukaKategorija").innerHTML="Kategorija mora biti odabrana!<br>"; 
+                }
+                else { 
+                    poljeCategory.style.border="1px solid green"; 
+                    document.getElementById("porukaKategorija").innerHTML=""; 
+                } 
+                if (slanjeForme != true) { 
+                    event.preventDefault(); 
+                } 
+            };
+        </script>
+            
+        <footer>
+            <img src="images/Welt_Logo.png" id="logo" alt=""><br>
+            Anja Cibula, acibula@tvz.hr, 2024
+        </footer>
+    </body>
+</html>
